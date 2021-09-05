@@ -1,0 +1,324 @@
+<!-- <div class="row mt-5">
+    <div class="col-md-12 pr-0 pl-0"> -->
+<div class="mt-5">
+    <mat-card>
+        <mat-card-content>
+            <mat-card-header>
+                <mat-card-title>Registro aspirante</mat-card-title>
+                <mat-icon>school</mat-icon>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-stepper linear="true">
+                <mat-step label="Datos generales" [stepControl]="form1" state="general">
+                    <form novalidate autocomplete="off" [formGroup]="form1">
+                        <mat-card class="no-shadow">
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Nombre *</mat-label>
+                                            <input matInput maxlength="30" formControlName="nombre">
+                                            <mat-error *ngIf="isForm1NombreValid">{{ getForm1ErrorMessage('nombre') }}</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Apellido Paterno *</mat-label>
+                                            <input matInput maxlength="25" formControlName="apellidoPaterno">
+                                            <mat-error *ngIf="isForm1ApaValid">{{ getForm1ErrorMessage('apellidoPaterno') }}</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Apellido Materno</mat-label>
+                                            <input matInput maxlength="25" formControlName="apellidoMaterno">
+                                            <mat-error *ngIf="isForm1AmaValid">{{ getForm1ErrorMessage('apellidoMaterno') }}</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Curp *</mat-label>
+                                            <input matInput class="curp" maxlength="18" formControlName="curp">
+                                            <mat-hint align="start"><a href="https://www.gob.mx/curp/" target="_blank">Consultar Curp</a></mat-hint>
+                                            <mat-error *ngIf="isForm1CurpValid">{{ getForm1ErrorMessage('curp') }}</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Estado Civil</mat-label>
+                                            <mat-select formControlName="estadoCivil">
+                                                <mat-option value="Soltero">Soltero</mat-option>
+                                                <mat-option value="Casado">Casado</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="isForm1ECivilValid">Este campo es requerido</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Fecha de nacimiento</mat-label>
+                                            <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                            <mat-error *ngIf="isForm1FechaNValid">Este campo es requerido</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Estado de nacimiento</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Municipio de nacimiento</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <div>
+                                    <button mat-raised-button matStepperNext color="primary" type="button" [disabled]="!form1.valid">Siguiente</button>
+                                </div>
+                                {{ form1.controls['fechaNacimiento'].errors | json }} {{ form1.value.fechaNacimiento }}
+                            </mat-card-actions>
+                        </mat-card>
+                    </form>
+                </mat-step>
+                <mat-step label="Datos de contacto" [stepControl]="form2" state="contact">
+                    <form novalidate autocomplete="off" [formGroup]="form2">
+                        <mat-card class="no-shadow">
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Estado actual</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Municipio actual</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Localidad</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Colonia</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Calle</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Código postal</mat-label>
+                                            <input matInput disabled>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Teléfono de casa</mat-label>
+                                            <input type="tel" matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Teléfono móvil</mat-label>
+                                            <input type="tel" matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Correo electrónico</mat-label>
+                                            <input type="email" matInput>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <div>
+                                    <button mat-raised-button matStepperNext color="primary" type="button">Siguiente</button>
+                                    <button mat-button matStepperPrevious type="button">Regresar</button>
+                                </div>
+                            </mat-card-actions>
+                        </mat-card>
+                    </form>
+                </mat-step>
+                <mat-step label="Datos para ficha escolar" [stepControl]="form3" state="school">
+                    <form novalidate autocomplete="off" [formGroup]="form3">
+                        <mat-card class="no-shadow">
+                            <mat-card-content>
+                                <div class="row">
+                                    <p>Selecciona la especialidad que te gustaría cursar, puedes elegir 3 opciones.</p>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Primera opción</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Segunda opción</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Tercera opción</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Tipo sanguíneo</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Nacionalidad</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Especificar nacionalidad</mat-label>
+                                            <input matInput disabled>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Secundaria de procedencia</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>CCT de la secundaria de procedencia</mat-label>
+                                            <input matInput>
+                                            <mat-icon matSuffix matTooltip="Es la clave del centro de trabajo de tu secundaria" matTooltipPosition="below">help</mat-icon>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <div>
+                                    <button mat-raised-button matStepperNext color="primary" type="button">Siguiente</button>
+                                    <button mat-button matStepperPrevious type="button">Regresar</button>
+                                </div>
+                            </mat-card-actions>
+                        </mat-card>
+                    </form>
+                </mat-step>
+                <mat-step label="Datos del padre o tutor" [stepControl]="form4" state="tutor">
+                    <form novalidate autocomplete="off" [formGroup]="form4">
+                        <mat-card class="no-shadow">
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Nombre</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Apellido Paterno</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Apellido Materno</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Ocupación</mat-label>
+                                            <mat-select>
+                                                <mat-option value="one">Estado1</mat-option>
+                                                <mat-option value="two">Estado2</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Número de contacto 1</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Número de contacto 2</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <div>
+                                    <button mat-raised-button color="primary" type="submit">Registrar</button>
+                                    <button mat-button matStepperPrevious type="button">Regresar</button>
+                                </div>
+                            </mat-card-actions>
+                        </mat-card>
+                    </form>
+                </mat-step>
+                <!-- Icon overrides. -->
+                <ng-template matStepperIcon="general">
+                    <mat-icon>description</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="contact">
+                    <mat-icon>phone</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="school">
+                    <mat-icon>square_foot</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="tutor">
+                    <mat-icon>supervisor_account</mat-icon>
+                </ng-template>
+            </mat-stepper>
+        </mat-card-content>
+    </mat-card>
+</div>
+<!--     </div>
+</div> -->

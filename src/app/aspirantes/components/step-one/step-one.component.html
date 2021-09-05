@@ -1,0 +1,78 @@
+<mat-step label="Datos generales" [stepControl]="form">
+    <form novalidate autocomplete="off" [formGroup]="form">
+        <mat-card class="no-shadow">
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nombre *</mat-label>
+                            <input matInput maxlength="30" formControlName="nombre">
+                            <mat-error *ngIf="isForm1NombreValid">{{ getNombreErrorMessage() }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Apellido Paterno *</mat-label>
+                            <input matInput maxlength="25" formControlName="apellidoPaterno">
+                            <mat-error *ngIf="isForm1ApaValid">{{ getApaErrorMessage() }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Apellido Materno</mat-label>
+                            <input matInput maxlength="25" formControlName="apellidoMaterno">
+                            <mat-error *ngIf="isForm1AmaValid">{{ getAmaErrorMessage() }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Curp *</mat-label>
+                            <input matInput class="curp" maxlength="18">
+                            <mat-hint align="start"><a href="https://www.gob.mx/curp/" target="_blank">Consultar Curp</a></mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Estado Civil</mat-label>
+                            <mat-select>
+                                <mat-option value="one">Soltero</mat-option>
+                                <mat-option value="two">Casado</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha de nacimiento</mat-label>
+                            <input matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Estado de nacimiento</mat-label>
+                            <mat-select>
+                                <mat-option value="one">Estado1</mat-option>
+                                <mat-option value="two">Estado2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Municipio de nacimiento</mat-label>
+                            <mat-select>
+                                <mat-option value="one">Estado1</mat-option>
+                                <mat-option value="two">Estado2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div>
+                    <button mat-raised-button matStepperNext color="primary" type="button" [disabled]="!form.valid">Siguiente</button> {{ form.controls['nombre'].errors | json }}
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</mat-step>
