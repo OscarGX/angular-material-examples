@@ -12,7 +12,7 @@ export const validateCurpDigit = (curp17: string): number => {
     for(let i=0; i<17; i++)
         lngSuma = lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18 - i);
     lngDigito = 10 - lngSuma % 10;
-    if (lngDigito == 10) 
+    if (lngDigito === 10) 
         return 0;
     return lngDigito;
 }

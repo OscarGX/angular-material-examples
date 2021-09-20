@@ -6,12 +6,14 @@ import { AspiranteRegistroComponent } from './pages/aspirante-registro/aspirante
 import { MaterialComponentsModule } from '../materialcomponents/materialcomponents.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StepOneComponent } from './components/step-one/step-one.component';
+import { CurpDemoComponent } from './pages/curp-demo/curp-demo.component';
 
 
 @NgModule({
   declarations: [
     AspiranteRegistroComponent,
-    StepOneComponent
+    StepOneComponent,
+    CurpDemoComponent
   ],
   imports: [
     CommonModule,
